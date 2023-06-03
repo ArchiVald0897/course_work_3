@@ -11,7 +11,6 @@ class TestFunctions(unittest.TestCase):
                                                               '"currency": {"name": "руб.", "code": "RUB"}}, '
                                                               '"description": "Перевод с карты на счет", "from": '
                                                               '"Maestro 1308795367077170", "to": '
-  
                                                               '"Счет 96527012349577388612"}]')
     def test_successful_operations(self, mock_file):
         result = successful_operations()
