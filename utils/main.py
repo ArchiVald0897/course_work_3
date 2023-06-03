@@ -6,19 +6,14 @@ for item in successful_operations():
     # преобразуем дату в формат DD.MM.YYYY
     date = datetime.strptime(item["date"], "%Y-%m-%dT%H:%M:%S.%f").date()
     date_str = date.strftime("%d.%m.%Y")
-    from_account = item.get("from")
-    if from_account is not None:
-        account_name = from_account.split(" ")[0]
-    else:
-        account_name = ""
 
-    # заменяем значения в строке description
-    description = item['description'].replace('Maestro', 'MasterCard')
-    description = description.replace('Visa Platinum', 'Visa')
-    description = description.replace('открытие вклада', 'открытие депозита')
+    # добавляем переменную description
+    description = item['description']
 
     # преобразуем номер карты
     if "from" in item:
+        from_account = item.get("from")
+        account_name = from_account.split(" ")[0]
         card_num = item["from"][item["from"].rfind(" ") + 1:]
         card_num = card_num[:4] + " " + card_num[4:6] + "** **** " + card_num[-4:]
         personal_account = f"{'*' * 16}{item['to'][-4:]}"
