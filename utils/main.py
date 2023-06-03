@@ -4,8 +4,8 @@ from datetime import datetime
 
 for item in successful_operations():
     # преобразуем дату в формат DD.MM.YYYY
-    date = datetime.strptime(item['date'], '%Y-%m-%dT%H:%M:%S.%f').date()
-    date_str = date.strftime('%d.%m.%Y')
+    date = datetime.strptime(item["date"], "%Y-%m-%dT%H:%M:%S.%f").date()
+    date_str = date.strftime("%d.%m.%Y")
     from_account = item.get("from")
     if from_account is not None:
         account_name = from_account.split(" ")[0]
